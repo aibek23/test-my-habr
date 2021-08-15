@@ -2,6 +2,7 @@
     overflow: hidden;
     background-color: rgb(252, 252, 252);
     padding: 20px 50px;
+    margin-bottom: 20px;
 }
 
 .header a {

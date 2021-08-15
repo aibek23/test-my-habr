@@ -5,11 +5,11 @@ class Header extends React.Component{
     render(){
         return (
             <div className="header">
-                <a href="\home" className="logo">HABR</a>
+                <a href="#" className="logo">HABR</a>
                 <div className="header-right">
-                    <a className="active" href="\All">Все</a>
-                    <a href="\news">Новости</a>
-                    <a href="\articles">Статьи</a>
+                    <a className="active" href="#home">Все</a>
+                    <a href="#">Новости</a>
+                    <a href="#">Статьи</a>
                 </div>
             </div>
         )

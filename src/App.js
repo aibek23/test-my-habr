@@ -1,11 +1,12 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import Header from "./components/header/Header";
 import PostCard from "./components/postCard/PostCard";
+import Post from './pages/post/Post';
 
 class App extends React.Component{
     constructor(props) {
         super(props);
+
         this.state = {
             posts:[]
         }
@@ -27,12 +28,15 @@ class App extends React.Component{
 
     render(){
         return (
-            <BrowserRouter>
+            <>
                 <Header/>
-                {                     
-                    this.state.posts.map( item => <PostCard data={item} key={item.id}/> )
-                }                    
-            </BrowserRouter>
+                <div className="container-center">
+                    <Post />
+                    {/*{*/}
+                    {/*    this.state.posts.map( item => <PostCard data={item} /> )*/}
+                    {/*}*/}
+                </div>
+            </>
         );
     }
 }
