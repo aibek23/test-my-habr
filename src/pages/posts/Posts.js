@@ -21,16 +21,17 @@ class Posts extends React.Component{
             .then(data => this.setState({
                 posts:data
             }))
+            
     }
 
 
     render(){    
         return(
-                <>
-                
+                <>     
                     {    
-                       this.state.posts.map( item => <PostCard data={item} /> )
+                       this.state.posts.map(item => <PostCard data={item} key={item.id}/>)
                     }
+                
                 </>
         )
     }

@@ -1,15 +1,11 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp, faThumbsDown, faCommentAlt } from '@fortawesome/free-solid-svg-icons'
-
+import { Link } from 'react-router-dom';
 class PostCard extends React.Component {
-    constructor(props) {
-        super(props);
-
-    }
-
     render() {
         return (
+            <>          
             <div className="postcard-container">
                 <div className="postcard">
                     <div className="postcard_authors">
@@ -20,7 +16,7 @@ class PostCard extends React.Component {
                         <img className="postcard__img" src={this.props.data.image} alt=""/>
                     </div>
                     <div className="postcard_title">
-                        <a href="#">{this.props.data.title}</a>
+                        <Link to={`/post/${this.props.data.id}`}>{this.props.data.title}</Link>
                     </div>
                     <div className="postcard_func">
                         <span className="mr-35"> <FontAwesomeIcon icon={faThumbsUp}  /> 5 </span>
@@ -29,6 +25,7 @@ class PostCard extends React.Component {
                     </div>
                 </div>
             </div>
+            </>
         )
     }
 }

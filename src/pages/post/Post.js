@@ -1,11 +1,13 @@
 import React from 'react';
 import Comments from '../../components/commets/Comments';
+import FormComments from '../../components/formCommet/FormComments';
 import styles from  './Post.module.css';
 
 class Post extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
+            postData:[],
             useBtn1:true,
             useBtn2:false,
             useBtn3:false,
@@ -16,7 +18,6 @@ class Post extends React.Component{
       }
     
       handleClick(e) {
-
           if(e.target.value==="1"){
             this.setState({useBtn1: true})
             this.setState({useBtn2: false})
@@ -30,16 +31,27 @@ class Post extends React.Component{
             this.setState({useBtn1: false})
             this.setState({useBtn2: false}) 
           }
-
       }
- 
-     
-  
-    
- 
+
+      componentDidMount(){
+
+        this.getPostsById()
+      }
+      getPostsById(){
+        const url ='http://localhost:3001/posts/'+this.props.match.params.id;
+        fetch(url)
+            .then(response=>{
+                if(response.ok){
+                    return response.json();
+                } else{
+                    alert('Ошибочка:  Статус'+ response.status)
+                }
+            })
+             .then(data=>this.setState({postData:data}))
+      }
+
 
     render(){
-
         return(
             <div className="postcard-container">
                 <div className="postcard-blocks">
@@ -48,10 +60,10 @@ class Post extends React.Component{
                         <span className="create_date">31.07.2021 19:59</span>
                     </div>
                     <div className="postcard_img">
-                        <img className="postcard__img" src="https://picsum.photos/1200/200" alt=""/>
+                        <img className="postcard__img" src={this.state.postData.image} alt=""/>
                     </div>
                     <div className="postcard_title">
-                        <h1 style={ {color:'red', marginBottom:'100px'} }>JPEG, который можно посмотреть в блокноте</h1>
+                        <h1 style={ {color:'red', marginBottom:'100px'} }>{this.state.postData.title}</h1>
                     </div>
                     <div className="postcard_desc">
                         <p>
@@ -78,22 +90,10 @@ class Post extends React.Component{
                         <button className={this.state.useBtn3?`${styles.active}`:""} onClick={this.handleClick} value="3">жалоба(<span
                         className={styles.counter}>5</span>)</button>
                     </div>
-                    <div className={styles.form}>
-                        <p>Добавьте комментарии</p>
-                        <div className={styles.formText}>
-                            <label htmlFor=""></label>
-                            <textarea  placeholder="Сообщение" name="" id="" cols="30" rows="5" ></textarea>
-                        </div>
-                        {/* <p>ваша имя</p>
-                        <div className={styles.formText}>
-                            <input  type="text" placeholder="Имя"/>
-                        </div> */}
-                     
-                            <button className={styles.formBtn}>Отправить</button>
-                        
-                    </div>
+                    <FormComments/> 
                 </div> 
-                {this.state.useBtn1?<Comments/>:""} 
+                {this.state.useBtn1?<Comments/>:""}
+                
             </div>
 
         )
