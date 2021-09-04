@@ -20,8 +20,15 @@
     overflow: hidden;
 }
 
-.card img {
+.card_img {
     max-width: 50%;
+    width: 350px;
+    height: 350px;
+}
+
+.card_img img {
+    height: 100%;
+
 }
 
 .content {

@@ -30,7 +30,9 @@ class Contacts extends React.Component{
                             
                         </div>
                     </div>
-                    <img src="https://openwhyd.org/uCoverImg/74da35a9bdca7a1657ca923f0bce1042_960x.jpg" alt="" />
+                    <div className={styles.card_img}>
+                        <img src="https://openwhyd.org/uCoverImg/74da35a9bdca7a1657ca923f0bce1042_960x.jpg" alt="" />
+                    </div>
                 </div>
             </div>
         </div>

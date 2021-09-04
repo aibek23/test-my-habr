@@ -8,33 +8,32 @@ class Post extends React.Component{
         super(props);
         this.state = {
             postData:[],
-            useBtn1:true,
-            useBtn2:false,
-            useBtn3:false,
+            // useBtn1:true,
+            // useBtn2:false,
+            // useBtn3:false,
         };
     
         // Эта привязка обязательна для работы `this` в колбэке.
-        this.handleClick = this.handleClick.bind(this);
+        // this.handleClick = this.handleClick.bind(this);
       }
     
-      handleClick(e) {
-          if(e.target.value==="1"){
-            this.setState({useBtn1: true})
-            this.setState({useBtn2: false})
-            this.setState({useBtn3: false})     
-          }else if(e.target.value==="2"){
-            this.setState({useBtn2: true})
-            this.setState({useBtn1: false})
-            this.setState({useBtn3: false})  
-          }else if(e.target.value==="3"){
-            this.setState({useBtn3: true})
-            this.setState({useBtn1: false})
-            this.setState({useBtn2: false}) 
-          }
-      }
+    //   handleClick(e) {
+    //       if(e.target.value==="1"){
+    //         this.setState({useBtn1: true})
+    //         this.setState({useBtn2: false})
+    //         this.setState({useBtn3: false})     
+    //       }else if(e.target.value==="2"){
+    //         this.setState({useBtn2: true})
+    //         this.setState({useBtn1: false})
+    //         this.setState({useBtn3: false})  
+    //       }else if(e.target.value==="3"){
+    //         this.setState({useBtn3: true})
+    //         this.setState({useBtn1: false})
+    //         this.setState({useBtn2: false}) 
+    //       }
+    //   }
 
       componentDidMount(){
-
         this.getPostsById()
       }
       getPostsById(){
@@ -82,17 +81,18 @@ class Post extends React.Component{
                     </div>
                 </div>
                  <div className={styles.comments}>
-                    <div className={styles.title}>                         
+                    {/* <div className={styles.title}>                         
                         <button className={this.state.useBtn1?`${styles.active}`:""} onClick={this.handleClick} value="1">Комментарии (<span
                         className={styles.counter}>5</span>)</button>
                         <button className={this.state.useBtn2?`${styles.active}`:""} onClick={this.handleClick} value="2">нравится(<span
                         className={styles.counter}>5</span>)</button>
                         <button className={this.state.useBtn3?`${styles.active}`:""} onClick={this.handleClick} value="3">жалоба(<span
                         className={styles.counter}>5</span>)</button>
-                    </div>
-                    <FormComments/> 
+                    </div> */}
+                    <FormComments id={this.props.match.params.id}/> 
+
                 </div> 
-                {this.state.useBtn1?<Comments/>:""}
+                {/* {this.state.useBtn1?<Comments id={this.props.match.params.id}/>:""} */}
                 
             </div>
 
